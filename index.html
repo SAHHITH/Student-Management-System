@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduPulse — Student Management System</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      (function() {
+        var isOff = false;
+        try {
+          if (typeof navigator !== 'undefined' && navigator.onLine === false) isOff = true;
+          if (sessionStorage.getItem('edupulse_network_status') === 'offline') isOff = true;
+        } catch(e) {}
+        if (isOff) {
+          var root = document.getElementById('root');
+          if (root && !root.hasChildNodes()) {
+            root.innerHTML = '<div style="min-height:100vh;width:100%;background-color:#f5f5f5;color:#111111;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem;text-align:center;font-family:system-ui,-apple-system,sans-serif;"><h1 style="font-size:clamp(6rem,18vw,9.5rem);font-weight:900;line-height:1;color:#0a0a0a;margin:0;">404</h1><h2 style="margin-top:0.5rem;font-size:clamp(1.25rem,4vw,1.875rem);font-weight:700;color:#666666;">Oops, This Page Not Found!</h2><p style="margin-top:0.5rem;font-size:clamp(1rem,2.5vw,1.25rem);font-weight:500;color:#b8b8b8;">The internet connection might be disconnected.</p><p style="margin-top:0.25rem;font-size:clamp(0.75rem,2vw,0.875rem);font-weight:500;color:#777777;">or the network may have been turned off in the system</p></div>';
+          }
+        }
+      })();
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
